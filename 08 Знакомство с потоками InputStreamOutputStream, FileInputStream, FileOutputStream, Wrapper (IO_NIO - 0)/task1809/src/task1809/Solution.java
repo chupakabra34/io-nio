@@ -19,7 +19,21 @@ Requirements:
 4. Потоки FileInputStream и FileOutputStream должны быть закрыты.*/
 
 public class Solution {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Введите первое имя файла: ");
+        FileInputStream file1 = new FileInputStream(reader.readLine());
+        System.out.print("Введите второе имя файла: ");
+        FileOutputStream file2 = new FileOutputStream(reader.readLine());
+        while (file1.available() > 0) {
+            byte[] buffer = new byte[file1.available()];
+            byte[] reverse = new byte[buffer.length];
+            file1.read(buffer);
+            for (int z = buffer.length - 1; z >= 0; z--) reverse[buffer.length - z - 1] = buffer[z];
+            file2.write(reverse);
+        }
+        file1.close();
+        file2.close();
+        reader.close();
     }
 }

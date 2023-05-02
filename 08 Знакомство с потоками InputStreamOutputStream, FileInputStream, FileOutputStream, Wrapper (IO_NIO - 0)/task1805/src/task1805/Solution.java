@@ -30,5 +30,20 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Введите имя файла: ");
+        FileInputStream fileInputStream = new FileInputStream(reader.readLine());
+        TreeSet<Integer> bytesSort = new TreeSet<>();
+        System.out.println("Исходные данные: ");
+        while (fileInputStream.available() > 0) {
+            System.out.print(fileInputStream.read() + " ");
+            bytesSort.add(fileInputStream.read());
+        }
+        fileInputStream.close();
+        System.out.println();
+        System.out.println("Результат: ");
+        for (int value : bytesSort) {
+            System.out.print(value + " ");
+        }
     }
 }

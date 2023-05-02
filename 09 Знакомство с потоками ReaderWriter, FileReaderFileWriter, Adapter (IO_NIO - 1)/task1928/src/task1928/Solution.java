@@ -51,7 +51,7 @@ public class Solution {
                 }
             }
 
-            if (result instanceof A) {
+            if (result instanceof C) {
                 C p = (C) result;
                 System.out.println(p.getClass().getSimpleName());
             }

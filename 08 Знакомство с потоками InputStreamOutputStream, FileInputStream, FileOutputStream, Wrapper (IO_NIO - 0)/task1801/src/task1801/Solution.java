@@ -19,5 +19,16 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Введите имя файла: ");
+        FileInputStream fileInputStream = new FileInputStream(reader.readLine());
+        int max = 0;
+        if (fileInputStream.available() > 0) max = fileInputStream.read();
+        while (fileInputStream.available() > 0) {
+            int value = fileInputStream.read();
+            if (max < value) max = value;
+        }
+        System.out.printf("Максимальный байт в файле: %d", max);
+        fileInputStream.close();
     }
 }

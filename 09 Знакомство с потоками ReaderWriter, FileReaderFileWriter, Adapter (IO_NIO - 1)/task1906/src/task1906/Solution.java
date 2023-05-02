@@ -24,6 +24,20 @@ Requirements:
 6. Поток записи в файл (FileWriter) должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Введите первое имя файла: ");
+        FileReader file1 = new FileReader(reader.readLine());
+        System.out.print("Введите второе имя файла: ");
+        FileWriter file2 = new FileWriter(reader.readLine());
+        int z = 1;
+        while (file1.ready()) {
+            int value = file1.read();
+            if (z % 2 == 0)
+                file2.write(value);
+            z++;
+        }
+        file1.close();
+        file2.close();
     }
 }
